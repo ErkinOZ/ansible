@@ -1,0 +1,36 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: install updates (Debian)
+    apt:
+      update_cache: yes 
+    when: ansible_distribution in ["Debian"]
+
+  - name: install updates (Ubuntu)
+    apt:
+      upgrade: dist
+      update_cache: yes
+    when: ansible_distribution in ["Ubuntu"]
+
+- hosts: web_servers
+  become: true
+  tasks:
+
+  - name: install mysql-server on Ubuntu
+    apt:
+      name:
+        - mysql-server
+      state: latest
+
+- hosts: debian_servers
+  become: true
+  tasks:
+
+  - name: install nginx to Debian server
+    apt:
+      name:
+        - nginx
+      state: latest
