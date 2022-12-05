@@ -21,43 +21,43 @@
   become: true
   tasks:
 
-  - name: install mysql-server on Ubuntu_1
+  - name: remove mysql-server on Ubuntu_1
     tags: mysql-ubuntu-1 
     apt:
       name:
         - mysql-server
-      state: latest
+      state: absent
 
 - hosts: ubuntu_2
   become: true
   tasks:
 
-  - name: install apache to Ubuntu-2 server
+  - name: remove apache to Ubuntu-2 server
     tags: apache-for-ubuntu_2
     apt:
       name:
         - apache2
-      state: latest
+      state: absent
 
 - hosts: ubuntu_3
   become: true
   tasks:
 
-  - name: install git to ubuntu_3
+  - name: remove git to ubuntu_3
     tags: git_for_ubuntu3
     apt:
       name:
         - git-all
-      state: latest
+      state: absent
 
 - hosts: debian_server
   become: true
   tasks:
 
-  - name: install nginx to debian server
+  - name: remove nginx to debian server
     tags: nginx-for-debian
     apt:
       name:
         - nginx
-      state: latest
+      state: absent
 
